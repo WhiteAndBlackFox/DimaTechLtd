@@ -2,7 +2,7 @@ from functools import wraps
 
 from sanic.response import json
 
-from app.auth import decode_token
+from app.helpers.auth import decode_token
 
 
 def require_auth(role: str | None = None):
@@ -22,7 +22,7 @@ def require_auth(role: str | None = None):
             if role and payload.get("role") != role:
                 return json({"error": "Forbidden"}, status=403)
 
-            request.ctx.user_id = payload["sub"]
+            request.ctx.user_id = int(payload["sub"])
             request.ctx.role = payload["role"]
             return await f(request, *args, **kwargs)
 

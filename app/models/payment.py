@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import DateTime, ForeignKey, Integer, Numeric, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.db import Base
+from app.db import Base, utcnow
 
 if TYPE_CHECKING:
     from app.models.account import Account
@@ -26,7 +26,7 @@ class Payment(Base):
         Integer, ForeignKey("accounts.id", ondelete="CASCADE"), nullable=False
     )
     amount: Mapped[Decimal] = mapped_column(Numeric(12, 2), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=utcnow)
 
     user: Mapped[User] = relationship("User", back_populates="payments")
     account: Mapped[Account] = relationship("Account", back_populates="payments")
