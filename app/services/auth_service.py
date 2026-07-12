@@ -1,8 +1,8 @@
 from sqlalchemy import select
 
-from app.helpers.auth import create_token, verify_password
 from app.db import async_session
 from app.exceptions import InvalidCredentialsError
+from app.helpers.auth import create_token, verify_password
 from app.models import User
 
 

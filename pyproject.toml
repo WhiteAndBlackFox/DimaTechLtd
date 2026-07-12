@@ -17,11 +17,18 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "aiosqlite>=0.21.0",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
+    "ruff>=0.14.0",
     "sanic-testing>=24.6.0",
 ]
+
+[tool.ruff]
+line-length = 110
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

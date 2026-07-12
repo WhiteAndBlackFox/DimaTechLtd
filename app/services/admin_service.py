@@ -1,9 +1,9 @@
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
-from app.helpers.auth import hash_password
 from app.db import async_session
 from app.exceptions import EmailAlreadyRegisteredError, UserNotFoundError
+from app.helpers.auth import hash_password
 from app.models import User
 
 
