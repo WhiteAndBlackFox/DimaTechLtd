@@ -1,5 +1,5 @@
-from app.helpers.auth import hash_password
 from app.factories import UserFactory
+from app.helpers.auth import hash_password
 
 
 def test_login_success(app, seed):

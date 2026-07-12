@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.helpers.auth import hash_password
 from app.factories import AdminFactory, UserFactory
+from app.helpers.auth import hash_password
 from app.models import User
 
 ADMIN_EMAIL = "admin@example.com"
@@ -12,7 +12,9 @@ USER_COUNT = 10
 DEFAULT_USER_PASSWORD = "12345!user54321"
 
 
-async def _get_or_create_user(session: AsyncSession, factory_cls, email: str, full_name: str, password: str) -> User:
+async def _get_or_create_user(
+    session: AsyncSession, factory_cls, email: str, full_name: str, password: str
+) -> User:
     existing = (await session.execute(select(User).where(User.email == email))).scalar_one_or_none()
     if existing is not None:
         return existing
