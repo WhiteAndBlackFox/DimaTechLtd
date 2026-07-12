@@ -1,6 +1,6 @@
 import factory
 
-from app.auth import hash_password
+from app.helpers.auth import hash_password
 from app.models import User, UserRole
 
 
