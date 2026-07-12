@@ -3,7 +3,24 @@ name = "dimatechltd"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
+    "alembic>=1.18.5",
     "asyncpg>=0.31.0",
+    "bcrypt>=5.0.0",
+    "factory-boy>=3.3.3",
+    "pyjwt>=2.13.0",
+    "python-dotenv>=1.2.2",
     "sanic>=25.12.1",
     "sqlalchemy[asyncio]>=2.0.51",
 ]
+
+[dependency-groups]
+dev = [
+    "aiosqlite>=0.21.0",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "sanic-testing>=24.6.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
